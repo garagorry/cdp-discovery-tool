@@ -182,7 +182,7 @@ class DatalakeDiscovery:
         for ig in instance_groups:
             ig_name = ig.get("name")
             azs = ",".join(ig.get("availabilityZones", []))
-            recipes = ",".join(ig.get("recipes", []))
+            recipes = ",".join(filter(None, ig.get("recipes", [])))
             
             for inst in ig.get("instances", []):
                 base = {
@@ -232,22 +232,26 @@ class DatalakeDiscovery:
         """Collect all recipe names from datalake object."""
         # Top-level recipes
         for recipe in dl_obj.get("recipes", []):
-            recipes_set.add(recipe)
+            if recipe:  # Only add non-None recipes
+                recipes_set.add(recipe)
         
         # Recipes under configuration
         for config_key in ["awsConfiguration", "azureConfiguration", "gcpConfiguration"]:
             config = dl_obj.get(config_key, {})
             if isinstance(config, dict):
                 for recipe in config.get("recipes", []):
-                    recipes_set.add(recipe)
+                    if recipe:  # Only add non-None recipes
+                        recipes_set.add(recipe)
                 for ig in config.get("instanceGroups", []):
                     for recipe in ig.get("recipes", []):
-                        recipes_set.add(recipe)
+                        if recipe:  # Only add non-None recipes
+                            recipes_set.add(recipe)
         
         # Recipes under top-level instanceGroups
         for ig in dl_obj.get("instanceGroups", []):
             for recipe in ig.get("recipes", []):
-                recipes_set.add(recipe)
+                if recipe:  # Only add non-None recipes
+                    recipes_set.add(recipe)
     
     def _describe_recipes_for_datalake(self, recipe_dir, recipes_set):
         """

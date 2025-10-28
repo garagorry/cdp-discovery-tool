@@ -160,7 +160,8 @@ class DatahubDiscovery:
         cluster_recipes_set = set()
         for ig in instance_groups:
             for recipe in ig.get("recipes", []):
-                cluster_recipes_set.add(recipe)
+                if recipe:  # Only add non-None recipes
+                    cluster_recipes_set.add(recipe)
         
         if cluster_recipes_set:
             recipe_dir = cluster_dir / "recipes"
@@ -195,7 +196,7 @@ class DatahubDiscovery:
             ig_name = ig.get("name")
             azs = ",".join(ig.get("availabilityZones", []))
             subnets = ",".join(ig.get("subnetIds", []))
-            recipes = ",".join(ig.get("recipes", []))
+            recipes = ",".join(filter(None, ig.get("recipes", [])))
             
             for inst in ig.get("instances", []):
                 base = {

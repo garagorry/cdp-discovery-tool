@@ -120,7 +120,7 @@ class EnvironmentDiscovery:
             log(f"⚠️ No FreeIPA instance groups found")
         
         # Discover FreeIPA recipes if present
-        recipes = freeipa_details.get("recipes", [])
+        recipes = [r for r in freeipa_details.get("recipes", []) if r]  # Filter out None values
         if recipes:
             self._discover_freeipa_recipes(recipes, env_dir)
     
@@ -139,7 +139,7 @@ class EnvironmentDiscovery:
             return rows
         
         instances = freeipa_obj.get("instances", [])
-        recipes = ",".join(freeipa_obj.get("recipes", []))
+        recipes = ",".join(filter(None, freeipa_obj.get("recipes", [])))
         
         for inst in instances:
             ig_name = inst.get("instanceGroup") or "default"

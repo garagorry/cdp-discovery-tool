@@ -168,24 +168,28 @@ class CODDiscovery:
         # Check for recipes in various possible locations
         # Top-level recipes
         for recipe in database_obj.get("recipes", []):
-            recipes_set.add(recipe)
+            if recipe:  # Only add non-None recipes
+                recipes_set.add(recipe)
         
         # Instance groups (if present)
         instance_groups = database_obj.get("instanceGroups", [])
         for ig in instance_groups:
             for recipe in ig.get("recipes", []):
-                recipes_set.add(recipe)
+                if recipe:  # Only add non-None recipes
+                    recipes_set.add(recipe)
         
         # Check under infrastructure details (varies by cloud provider)
         for config_key in ["infrastructure", "nodeGroups", "computeResources"]:
             config = database_obj.get(config_key, {})
             if isinstance(config, dict):
                 for recipe in config.get("recipes", []):
-                    recipes_set.add(recipe)
+                    if recipe:  # Only add non-None recipes
+                        recipes_set.add(recipe)
                 # Check instance groups within config
                 for ig in config.get("instanceGroups", []):
                     for recipe in ig.get("recipes", []):
-                        recipes_set.add(recipe)
+                        if recipe:  # Only add non-None recipes
+                            recipes_set.add(recipe)
     
     def _describe_recipes_for_database(self, recipe_dir, recipes_set):
         """
