@@ -26,42 +26,26 @@ Before starting, ensure you have:
 
 ## Installation
 
-### Option 1: Clone the Entire Repository (Recommended)
+### Option 1: Clone the Repository (Recommended)
 
 ```bash
 # Clone the repository
-git clone https://github.com/garagorry/cldr.git
+git clone https://github.com/garagorry/cdp-discovery-tool.git
 
 # Navigate to the discovery tool
-cd cldr/cdppc/misc/discovery_environment
+cd cdp-discovery-tool
 
 # Verify installation
 ls -la
 ```
 
-### Option 2: Clone Only the Discovery Tool (Sparse Checkout)
+### Option 2: Download as ZIP (No Git Required)
 
-If you only want the discovery tool without the entire repository:
-
-```bash
-# Clone with sparse checkout
-git clone --filter=blob:none --sparse https://github.com/garagorry/cldr.git
-cd cldr
-
-# Checkout only the discovery_environment folder
-git sparse-checkout set cdppc/misc/discovery_environment
-
-# Navigate to the tool
-cd cdppc/misc/discovery_environment
-```
-
-### Option 3: Download as ZIP (No Git Required)
-
-1. Go to: https://github.com/garagorry/cldr
+1. Go to: https://github.com/garagorry/cdp-discovery-tool
 2. Click the green **"Code"** button
 3. Select **"Download ZIP"**
 4. Extract the ZIP file
-5. Navigate to `cldr-main/cdppc/misc/discovery_environment/`
+5. Navigate to `cdp-discovery-tool-main/`
 
 ## Quick Start
 
@@ -196,7 +180,7 @@ For issues or questions:
 
 1. Check the [README.md](README.md) troubleshooting section
 2. Run with `--debug` flag for detailed output
-3. Open an issue on GitHub: https://github.com/garagorry/cldr/issues
+3. Open an issue on GitHub: https://github.com/garagorry/cdp-discovery-tool/issues
 
 ## System Requirements
 

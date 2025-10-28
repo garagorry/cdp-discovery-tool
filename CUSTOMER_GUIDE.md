@@ -1,6 +1,6 @@
 # CDP Environment Discovery Tool - Customer Quick Start
 
-**Repository:** https://github.com/garagorry/cldr
+**Repository:** https://github.com/garagorry/cdp-discovery-tool
 
 ---
 
@@ -9,15 +9,15 @@
 ### Option A: Git Clone (Recommended)
 
 ```bash
-git clone https://github.com/garagorry/cldr.git
-cd cldr/cdppc/misc/discovery_environment
+git clone https://github.com/garagorry/cdp-discovery-tool.git
+cd cdp-discovery-tool
 ```
 
 ### Option B: Download ZIP (No Git)
 
-1. Visit: https://github.com/garagorry/cldr
+1. Visit: https://github.com/garagorry/cdp-discovery-tool
 2. Click green "Code" → "Download ZIP"
-3. Extract and navigate to: `cldr-main/cdppc/misc/discovery_environment/`
+3. Extract and navigate to: `cdp-discovery-tool-main/`
 
 ---
 
@@ -128,7 +128,7 @@ python3 discover.py --environment-name my-env --debug
 - API Reference: [API_REFERENCE.md](API_REFERENCE.md)
 
 **Report Issues:**
-https://github.com/garagorry/cldr/issues
+https://github.com/garagorry/cdp-discovery-tool/issues
 
 ---
 

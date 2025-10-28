@@ -16,7 +16,7 @@ Discovers all CDP services and exports detailed configuration as JSON and CSV:
 ### Quick Install (One-Liner)
 
 ```bash
-git clone https://github.com/garagorry/cldr.git && cd cldr/cdppc/misc/discovery_environment
+git clone https://github.com/garagorry/cdp-discovery-tool.git && cd cdp-discovery-tool
 ```
 
 **📚 For detailed installation instructions:** See [INSTALL.md](INSTALL.md)
